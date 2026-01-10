@@ -4,23 +4,27 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    /* 1. オートマウス用プロセッサ (Input Processor) */
+    /* 1. オートマウス用プロセッサの枠組み */
     zip_temp_layer_2: zip_temp_layer_2 {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
     };
 
-    /* 2. スクロール用プロセッサ (Input Processor) */
+    /* 2. スクロール用プロセッサ */
     ib_scroll: ib_scroll {
         compatible = "zmk,input-behavior-layers";
         #binding-cells = <0>;
         layers = <1>; 
     };
 
-    /* 3. プロセッサの登録 */
-    trackball_input_listener {
-        compatible = "zmk,input-listener";
-        /* 呼び出し側で <レイヤー番号 タイムアウト時間> を指定します */
+    /* * 3. 既存のリスナーを「参照(&)」してプロセッサを追加する
+     * トラつきの標準リスナー名である central / peripheral 両方に適用します
+     */
+    &trackball_central_listener {
+        input-processors = <&zip_temp_layer_2 2 700>, <&ib_scroll>;
+    };
+
+    &trackball_peripheral_listener {
         input-processors = <&zip_temp_layer_2 2 700>, <&ib_scroll>;
     };
 
