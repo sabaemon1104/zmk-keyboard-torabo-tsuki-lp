@@ -22,7 +22,7 @@
     /* トラックボールの挙動を管理するリスナー */
     trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&pd0>; // トラボのデバイス名
+        device = <&ps0>; // トラボのデバイス名
         input-processors = <&zip_temp_layer_2>, <&ib_scroll>;
     };
 
