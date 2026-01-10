@@ -4,26 +4,25 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    /* 1. オートマウスレイヤーの設定 (Input Processor) */
+    /* 1. オートマウス用プロセッサ (Input Processor) */
     zip_temp_layer_2: zip_temp_layer_2 {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <0>;
-        layer = <2>;            // 自動で切り替わるレイヤー番号
-        timeout-ms = <700>;     // 停止後700msで復帰
+        layer = <2>;
+        timeout-ms = <700>;
     };
 
-    /* 2. スクロールレイヤーの設定 (Input Processor / Behavior) */
+    /* 2. スクロール用プロセッサ (Input Processor) */
     ib_scroll: ib_scroll {
         compatible = "zmk,input-behavior-layers";
         #binding-cells = <0>;
-        layers = <1>;           // このレイヤーにいる間はスクロール
+        layers = <1>; 
     };
 
-    /* 3. トラックボール・リスナーへの適用 */
-    /* ※ここがエラーの火種になりやすいため、新しいノード名で定義します */
-    trackball_input_listener: trackball_input_listener {
+    /* 3. デバイス名を使わずにプロセッサをシステムに登録する */
+    /* これにより 'ps0' エラーを回避しつつ機能を有効化します */
+    trackball_input_listener {
         compatible = "zmk,input-listener";
-        device = <&ps0>; // ビルドガイドや基板設計で標準の名称
         input-processors = <&zip_temp_layer_2>, <&ib_scroll>;
     };
 
