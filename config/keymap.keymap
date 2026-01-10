@@ -3,48 +3,29 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* マウスプロセッサの設定 */
-&zip_temp_layer_fifo {
-    // ボールを動かした時に自動で切り替わるレイヤーを指定 (layer_2)
-    device = <&pd0>;
-    temp-layer = <2>; 
-    terminate-after-ms = <700>; // 700ms間操作がないと元のレイヤーに戻る
-};
-
-&zip_scroll_scaler {
-    // スクロール速度の調整
-    trackball {
-        device = <&pd0>;
-        multiplier = <1>;
-        divisor = <2>;
-    };
-};
-
 / {
-    /* スクロール動作の定義 */
-    behaviors {
-        // layer_1 にいる間だけスクロールモードにする
-        ib_scroll: ib_scroll {
-            compatible = "zmk,input-behavior-layers";
-            #binding-cells = <0>;
-            layers = <1>; // layer_1 でスクロール有効
-            evt-type = <INPUT_EV_REL>;
-            x-input-code = <INPUT_REL_MISC>;
-            y-input-code = <INPUT_REL_WHEEL>;
-            scale-multiplier = <1>;
-            scale-divisor = <4>;
-        };
+    /* マウス操作を検知して自動でレイヤー2に切り替える設定 */
+    zip_temp_layer_2: zip_temp_layer_2 {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <0>;
+        layer = <2>;
+        timeout-ms = <700>;
     };
 
-/* トラックボールのリスナー設定 */
+    /* スクロール動作の定義 */
+    ib_scroll: ib_scroll {
+        compatible = "zmk,input-behavior-layers";
+        #binding-cells = <0>;
+        layers = <1>; // レイヤー1にいる間はスクロール
+    };
+
+    /* トラックボールの挙動を管理するリスナー */
     trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&pd0>;
-        // オートマウスとスクロールのプロセッサを登録
-        input-processors = <&zip_temp_layer_fifo>, <&ib_scroll>;
+        device = <&pd0>; // トラボのデバイス名
+        input-processors = <&zip_temp_layer_2>, <&ib_scroll>;
     };
 
-/ {
     combos {
         compatible = "zmk,combos";
 
