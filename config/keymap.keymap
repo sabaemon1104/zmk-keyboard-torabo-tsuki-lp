@@ -34,14 +34,6 @@
 &trans  &kp LEFT_SHIFT    &trans        &trans        &trans     &trans  &trans  &trans  &trans  &trans          &trans          &trans           &kp RIGHT_SHIFT  &trans
 &trans  &kp LEFT_CONTROL  &kp LEFT_GUI  &kp LEFT_ALT  &trans     &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans           &trans
             >;
-            /*ここから追加*/
-            /* このレイヤーが有効な間、トラックボールをスクロールモードにする設定 */
-            trackball_listener {
-                device = <&ps0>; // センサーの指定
-                layers = <1>;    // レイヤー1の時に有効
-                input-processors = <&zip_scroll_scaler 2 1>; // スクロールとして動作させる
-            };
-            /*ここまで追加*/
         };
 
         layer_2 {
