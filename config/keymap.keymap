@@ -4,12 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    /*オートマウスレイヤー有効化 ここから*/
-    &trackball_listener {
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
-    };
-    /*オートマウスレイヤー有効化 ここまで*/
-
+  
     combos {
         compatible = "zmk,combos";
         bt_clear {
