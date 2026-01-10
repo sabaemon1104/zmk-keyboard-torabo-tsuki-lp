@@ -68,10 +68,3 @@
     };
 };
 
-/* ここから追記：Layer 1がアクティブな時だけスクロールモードにする設定 */
-&trackball_listener {
-    status = "okay";
-    /* レイヤー1にいる時だけ、XY移動をスクロール(REL_HW, REL_VW)に変換する */
-    input-processors = <&zip_temp_layer_scroll 1>;
-};
-/* ここまで */
