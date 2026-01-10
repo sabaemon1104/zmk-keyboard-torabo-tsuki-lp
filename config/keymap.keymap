@@ -4,7 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    /* マウス操作を検知して自動でレイヤー2に切り替える設定 */
+    /* オートマウス：動かした時に一時的にレイヤー2にするプロセッサ */
     zip_temp_layer_2: zip_temp_layer_2 {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <0>;
@@ -12,17 +12,21 @@
         timeout-ms = <700>;
     };
 
-    /* スクロール動作の定義 */
+    /* スクロール：特定のレイヤーにいる時にスクロール化するプロセッサ */
     ib_scroll: ib_scroll {
         compatible = "zmk,input-behavior-layers";
         #binding-cells = <0>;
-        layers = <1>; // レイヤー1にいる間はスクロール
+        layers = <1>; 
     };
 
-    /* トラックボールの挙動を管理するリスナー */
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps0>; // トラボのデバイス名
+    /* * 元々のリポジトリで定義されているリスナーに、
+     * 上記のプロセッサを追加する設定 
+     */
+    &trackball_central_listener {
+        input-processors = <&zip_temp_layer_2>, <&ib_scroll>;
+    };
+
+    &trackball_peripheral_listener {
         input-processors = <&zip_temp_layer_2>, <&ib_scroll>;
     };
 
