@@ -40,21 +40,21 @@
 
         layer_3 {
             bindings = <
-&trans  &trans             &trans        &trans        &trans      &trans                                &trans        &trans        &trans        &trans         &trans                     &trans
-&trans  &kp F7             &kp F8        &kp F9        &kp F14     &kp F15                               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp EQUAL      &kp ESCAPE                 &trans
-&trans  &kp F4             &kp F5        &kp F6        &kp F12     &kp F13  &trans         &trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp SQT        &kp ENTER                  &trans
-&trans  &mt LEFT_SHIFT F1  &kp F2        &kp F3        &kp F10     &kp F11  &kp BACKSLASH  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SEMICOLON  &mt RIGHT_SHIFT BACKSLASH  &trans
-&trans  &kp LEFT_CONTROL   &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &kp TAB  &trans         &trans        &trans        &trans        &trans        &kp COLON      &kp DELETE                 &trans
+&trans  &trans             &trans        &trans        &trans      &trans                                &trans        &trans        &trans        &trans            &trans                     &trans
+&trans  &kp F7             &kp F8        &kp F9        &kp F14     &kp F15                               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp EQUAL         &kp SLASH                  &trans
+&trans  &kp F4             &kp F5        &kp F6        &kp F12     &kp F13  &trans         &trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp SQT           &kp ENTER                  &trans
+&trans  &mt LEFT_SHIFT F1  &kp F2        &kp F3        &kp F10     &kp F11  &kp BACKSLASH  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp COLON         &mt RIGHT_SHIFT SEMICOLON  &trans
+&trans  &kp LEFT_CONTROL   &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &kp TAB  &trans         &trans        &trans        &trans        &trans        &kp LEFT_BRACKET  &kp RIGHT_BRACKET          &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans                  &trans                   &trans                                       &trans             &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &kp LEFT_ALT            &kp TAB                  &trans                                       &kp LS(LC(SPACE))  &kp LC(SPACE)   &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans  &trans  &kp LS(LG(LEFT_ARROW))  &kp LS(LG(RIGHT_ARROW))  &kp LG(UP_ARROW)  &trans             &trans  &trans             &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
-&trans  &trans  &trans  &kp LC(TAB)             &kp LC(LS(TAB))          &kp LC(PAGE_UP)   &kp LC(PAGE_DOWN)  &trans  &trans             &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans                  &trans                   &trans            &trans             &trans  &trans             &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans            &trans             &trans                                      &trans             &trans         &trans    &trans     &trans  &trans
+&trans  &trans  &trans  &kp LEFT_ALT      &kp TAB            &trans                                      &kp LS(LC(SPACE))  &kp LC(SPACE)  &kp UP    &trans     &trans  &trans
+&trans  &trans  &trans  &kp LS(LG(LEFT))  &kp LS(LG(RIGHT))  &kp LG(UP)       &trans             &trans  &trans             &kp LEFT       &kp DOWN  &kp RIGHT  &trans  &trans
+&trans  &trans  &trans  &kp LC(TAB)       &kp LC(LS(TAB))    &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &trans  &trans             &trans         &trans    &trans     &trans  &trans
+&trans  &trans  &trans  &trans            &trans             &trans           &trans             &trans  &trans             &trans         &trans    &trans     &trans  &trans
             >;
         };
     };
